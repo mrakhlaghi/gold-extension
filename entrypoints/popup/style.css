@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Vazir:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import "tailwindcss";
+
+/* Fallback font loading */
+@font-face {
+  font-family: "Vazir";
+  src: url("https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/Vazir.woff2")
+      format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/Vazir.woff")
+      format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Additional fallback for Persian text */
+@font-face {
+  font-family: "VazirFallback";
+  src: local("Tahoma"), local("Arial"), local("sans-serif");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  font-family: "mirza", "VazirFallback", "Tahoma", "Arial", sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #0f172a;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "mirza", "VazirFallback", "Tahoma", "Arial", sans-serif !important;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: "mirza", "VazirFallback", "Tahoma", "Arial", sans-serif !important;
+}
+
+/* Extension popup specific styles */
+#root {
+  width: 400px;
+  min-height: 600px;
+  max-height: 800px;
+  overflow-y: auto;
+}
+
+/* Persian text direction */
+[dir="rtl"] {
+  text-align: right;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #111827; /* bg-gray-900 */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #eab308; /* bg-yellow-500 */
+  border-radius: 9999px; /* rounded-full */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #facc15; /* bg-yellow-400 */
+}
+
+/* Loading animations */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 2s linear infinite;
+}
+
+/* Gold glow effect */
+@keyframes gold-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(245, 158, 11, 0.6);
+  }
+}
+
+.gold-glow {
+  animation: gold-glow 2s ease-in-out infinite;
+}
