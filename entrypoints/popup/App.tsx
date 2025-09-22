@@ -66,6 +66,7 @@ const App: React.FC = () => {
     return change >= 0 ? "▲" : "▼";
   };
 
+
   return (
     <div
       className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 !p-3"
@@ -78,7 +79,14 @@ const App: React.FC = () => {
             🪙 قیمت طلا
           </h1>
           <p className="text-slate-300 !tracking-widest text-lg font-vazir">
-            اطلاعات زنده از tgju.org
+            اطلاعات زنده از
+            <a
+              href="https://www.tgju.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              tgju.org
+            </a>
           </p>
         </div>
 
@@ -133,18 +141,28 @@ const App: React.FC = () => {
               {/* Table Body */}
               <div className="!p-3 !space-y-2  w-full  h-full items-center  ">
                 {/* Current Price */}
-                <div className="flex justify-between items-center !p-3 bg-gradient-to-r from-emerald-600/20 to-green-600/20 rounded-xl border border-emerald-500/30 hover:from-emerald-600/30 hover:to-green-600/30 transition-all duration-300">
+                <div
+                  className={`flex justify-between items-center !p-3 rounded-xl border transition-all duration-300 ${
+                    data.dp >= 0
+                      ? "bg-gradient-to-r from-green-600/20 to-emerald-600/20 border-green-500/30 hover:from-green-600/30 hover:to-emerald-600/30"
+                      : "bg-gradient-to-r from-red-600/20 to-pink-600/20 border-red-500/30 hover:from-red-600/30 hover:to-pink-600/30"
+                  }`}
+                >
                   <div className="flex items-center">
                     <span className="text-2xl mr-2">📈</span>
-                    <span className="text-emerald-100 font-medium text-lg font-vazir">
+                    <span className="text-slate-200 font-medium text-lg font-vazir">
                       قیمت فعلی
                     </span>
                   </div>
                   <div className="text-left">
-                    <div className="text-2xl font-bold text-emerald-300 font-vazir">
+                    <div
+                      className={`text-2xl font-bold font-vazir ${
+                        data.dp >= 0 ? "text-green-300" : "text-red-300"
+                      }`}
+                    >
                       {formatPrice(data.p)}
                     </div>
-                    <div className="text-xs text-emerald-200 font-vazir">
+                    <div className="text-xs text-slate-300 font-vazir">
                       ریال
                     </div>
                   </div>
@@ -153,18 +171,18 @@ const App: React.FC = () => {
                 {/* Price Change */}
                 <div
                   className={`flex justify-between items-center !p-3 rounded-xl border transition-all duration-300 ${
-                    data.d >= 0
+                    data.dp >= 0
                       ? "bg-gradient-to-r from-green-600/20 to-emerald-600/20 border-green-500/30 hover:from-green-600/30 hover:to-emerald-600/30"
                       : "bg-gradient-to-r from-red-600/20 to-pink-600/20 border-red-500/30 hover:from-red-600/30 hover:to-pink-600/30"
                   }`}
                 >
                   <div className="flex items-center">
                     <span className="text-2xl mr-2">
-                      {data.d >= 0 ? "📈" : "📉"}
+                      {data.dp >= 0 ? "📈" : "📉"}
                     </span>
                     <span
                       className={`font-medium text-lg font-vazir ${
-                        data.d >= 0 ? "text-green-100" : "text-red-100"
+                        data.dp >= 0 ? "text-green-100" : "text-red-100"
                       }`}
                     >
                       تغییر قیمت
@@ -172,20 +190,23 @@ const App: React.FC = () => {
                   </div>
                   <div className="text-left">
                     <div
-                      className={`text-lg font-bold font-vazir ${
-                        data.d >= 0 ? "text-green-300" : "text-red-300"
+                      className={`text-lg  font-bold font-vazir ${
+                        data.dp >= 0 ? "text-green-300" : "text-red-300"
                       }`}
                     >
-                      {data.d >= 0 ? "+" : ""}
+                      {data.d >= 0 ? "+" : "-"}
                       {formatPrice(data.d)}
                     </div>
+                      
                     <div
-                      className={`text-xs font-vazir ${
-                        data.d >= 0 ? "text-green-200" : "text-red-200"
+                      className={`text-xs  justify-center font-vazir ${
+                        data.dp >= 0 ? "text-green-200" : "text-red-200"
                       }`}
                     >
-                      ({data.dp >= 0 ? "+" : ""}
-                      {data.dp.toFixed(2)}%)
+                      (
+                      {data.dp.toFixed(2)}%
+                      {data.dp >= 0 ? "+" : "-"}
+                      )
                     </div>
                   </div>
                 </div>
