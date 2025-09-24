@@ -85,6 +85,10 @@ The zip files are created at the path reported by WXT and can be uploaded to the
 2. Click the extension icon to open the popup UI.
 3. On supported pages, the content script will activate automatically (grant permissions if prompted).
 
+## UI Preview
+
+![TGJU Gold Extension UI](assets/ui-sample.png)
+
 ## Project structure (quick look)
 
 - `entrypoints/` contains the extension entry points:
